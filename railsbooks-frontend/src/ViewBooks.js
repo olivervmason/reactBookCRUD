@@ -35,6 +35,7 @@ const ViewBooks = () => {
     return (
       <div>
         {!isLoading ? renderBooks() : <h2>Loading...</h2> } 
+        {errorMessage && <h3>{errorMessage}</h3>}
       </div>
     );
 }
