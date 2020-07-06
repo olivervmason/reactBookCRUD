@@ -27,7 +27,7 @@ const ViewBooks = () => {
     function renderBooks(){
         return (
         <>
-            <CreateBook />
+            <Link to={`/book/new`}>Add a new Book</Link>
             {books.map((book, index) => (
             <li key={`${book}-${index}`}>
                 {index}. {book.title} by {book.author} - {book.genre}
