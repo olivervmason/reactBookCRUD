@@ -17,6 +17,13 @@ const ViewBooks = () => {
     return (
       <div>
         All books component
+
+        {books.map((book, index) => (
+            <li key={`${book}-${index}`}>
+                {index}. {book.title} by {book.author} - {book.genre}
+            </li>
+        ))}
+
       </div>
     );
 }
