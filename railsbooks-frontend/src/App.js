@@ -8,6 +8,7 @@ function App() {
       <div>
         <BrowserRouter>
           <Route exact path="/" component={ViewBooks} />  
+          <Route exact path="/books" component={ViewBooks} />  
           <Route exact path="/books/:id" render={props => <ViewBook bookId={props.match.params.id}/> } />  
         </BrowserRouter>
       </div>

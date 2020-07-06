@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 const ViewBooks = () => {
 
@@ -27,6 +28,7 @@ const ViewBooks = () => {
             {books.map((book, index) => (
             <li key={`${book}-${index}`}>
                 {index}. {book.title} by {book.author} - {book.genre}
+                <Link to={`/books/${book.id}`}>View book detail</Link>&nbsp;
             </li>
         ))}
         </>
