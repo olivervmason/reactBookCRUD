@@ -5,7 +5,7 @@
     rails db:create 
 
 *3. Scaffold out song entity in Rails - to have title and artist only:
-    rails g scaffold Song title:string artist:string 
+    rails g scaffold Book title:string author:string genre:string
 
 *4. Migrate database:
     rails db:migrate 
@@ -15,13 +15,14 @@
 
 *6. Update seed file:
 
-for i in 1..10
-    Song.create(
-        title: Faker::Music::Prince.song,
-        artist: "Prince"
+for i in 1..25
+    Book.create(
+        title: Faker::Book.title,
+        author: Faker::Book.author,
+        genre: Faker::Book.genre
     )
-    puts "Created #{i} songs"
-end 
+    puts "Created #{i} books"
+end
 
 *7. run rails db:seed
 
