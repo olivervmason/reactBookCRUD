@@ -98,20 +98,38 @@ At top of Viewsongs:
 
 ---------------------------------------
 
-19. Now that we have the data, we want to display it to the user. Set up state to store the songs in it. Inside the ViewSongs method:
-
-const [songs, setSongs] = useState(null)
-setSongs(data)
+19. Now that we have the data, we want to display it to the user. Set up state to store the songs in it. Inside the ViewSongs method (* in 20 below):
 
 20. Add method return div to render to screen:
 
-        <div>
-            {songs.map((song, index) => (
-                <li key={song}>{index}: {song.title}, by {song.artist}</li>
-            ))}
-        </div>
+const ViewBooks = () => {
 
-(NB issues axios vs fetch here)
+*   const [books, setBooks] = useState([])
+
+    // This code to run upon mounting so uses useState hook
+    useEffect(() => {
+        axios.get(`http://localhost:3000/books/`)
+            .then (res => {
+*               setBooks(res.data)
+                console.log(res.data)
+            })
+    }, [])
+
+    return (
+      <div>
+        All books component
+
+        {books.map((book, index) => (
+            <li key={`${book}-${index}`}>
+                {index}. {book.title} by {book.author} - {book.genre}
+            </li>
+        ))}
+
+      </div>
+    );
+}
+
+---------------------------------------
 
 21. Added in code to show when page was loading, and refactored it to its own function.
 

@@ -4,7 +4,6 @@ import ViewBooks from './ViewBooks'
 function App() {
     return (
       <div>
-        App component
         <ViewBooks />
       </div>
     );
