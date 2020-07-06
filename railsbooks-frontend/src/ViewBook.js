@@ -27,7 +27,7 @@ const ViewBook = (props) => {
         <>
             <li key={`${book}`}>
                 {book.title} by {book.author} - {book.genre}&nbsp;
-                <Link to="/">Book list</Link>
+                <Link to="/">Book list </Link>
             </li>
         </>
         )}
