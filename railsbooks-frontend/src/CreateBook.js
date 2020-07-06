@@ -6,6 +6,7 @@ const CreateBook = () => {
     const [bookTitle, setBookTitle] = useState("")
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookGenre, setBookGenre] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
 
     function createBook(){
         // console.log("CreateBook method activated")
@@ -19,7 +20,7 @@ const CreateBook = () => {
                 }
             })
         } else {
-            console.log("Please fill out all values")
+            setErrorMessage("^^ All fields are mandatory ^^")
         }
     }
 
@@ -44,6 +45,8 @@ const CreateBook = () => {
             />
             <div></div>
             <button onClick={createBook}>Create new book</button>
+            <div></div>
+            <h4>{errorMessage}</h4>
         </>
     )
 }
