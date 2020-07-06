@@ -170,15 +170,14 @@ Render error message conditionally on state of errorMessage variable:
 Add:
 import {BrowserRouter, Route} from 'react-router-dom'
 
-    <BrowserRouter>
-        <Route exact path="/" component="{ViewSongs}" />
-    </BrowserRouter>
-
+<BrowserRouter>
+    <Link to={`/books/${book.id}`}>View book detail</Link>&nbsp;
+</BrowserRouter>
 
 25. To add links... At top of page:
     import {Link} from 'react-router-dom'
 Then within render method:
-    <Link to={`/books/${book.id}`}>View book detail</Link>&nbsp;
 
+<Link to="/">Book list</Link>           
 
 26. Create Delete functionality - separate file.
