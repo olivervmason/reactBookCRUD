@@ -157,6 +157,10 @@ const ViewBooks = () => {
 
 22. To handle errors, start by adding to top:
     const [errorMessage, setErrorMessage] = useState("")
+.catch method changes state from blank to contain error:
+    .catch(e => {setErrorMessage("Error - please check URL")})
+Render error message conditionally on state of errorMessage variable:
+    {errorMessage && <h3>{errorMessage}</h3>}
 
 23. Start work on file to view a single song... create ViewSong.js
 

@@ -6,7 +6,7 @@ function App() {
     return (
       <div>
         <ViewBooks />
-        <ViewBook />
+        <ViewBook bookId="1"/>
       </div>
     );
 }
