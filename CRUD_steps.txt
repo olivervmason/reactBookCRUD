@@ -72,9 +72,12 @@ Can also try post request.
     npm start 
 
 *14. Add file for viewing songs and fix plumbing:
-    - ViewSongs.js
+    - ViewBooks.js
+
+---------------------------------------
 
 15. Add in useEffect to ViewSongs to be able to create method that runs on mounting.
+    import React, {useEffect} from 'react'
 
 16. Add in Axios:
     npm i axios
@@ -85,13 +88,15 @@ At top of Viewsongs:
 *17. Add in http request within useEffect method:
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/songs`)
+        axios.get(`http://localhost:3000/books`)
             .then(res => {
                 console.log(res.data)
             })
     }, [])
 
 18. Refresh page and check console - should be returning songs list.
+
+---------------------------------------
 
 19. Now that we have the data, we want to display it to the user. Set up state to store the songs in it. Inside the ViewSongs method:
 
