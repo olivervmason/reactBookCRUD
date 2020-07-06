@@ -133,6 +133,28 @@ const ViewBooks = () => {
 
 21. Added in code to show when page was loading, and refactored it to its own function.
 
+    function renderBooks(){
+        return (
+        <>
+            {books.map((book, index) => (
+            <li key={`${book}-${index}`}>
+                {index}. {book.title} by {book.author} - {book.genre}
+            </li>
+        ))}
+        </>
+        )}
+
+    return (
+      <div>
+        {!isLoading ? (
+              renderBooks()
+        ) : ( 
+        <h2>Loading...</h2>
+        )} 
+      </div>
+    );
+
+
 22. To handle errors, start by adding to top:
     const [errorMessage, setErrorMessage] = useState("")
 

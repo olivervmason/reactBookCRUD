@@ -34,12 +34,7 @@ const ViewBooks = () => {
 
     return (
       <div>
-        {!isLoading ? (
-              renderBooks()
-        ) : ( 
-        <h2>Loading...</h2>
-        )} 
-
+        {!isLoading ? renderBooks() : <h2>Loading...</h2> } 
       </div>
     );
 }
