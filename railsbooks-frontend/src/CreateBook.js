@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link, Redirect} from 'react-router-dom'
 import axios from 'axios'
 
 const CreateBook = () => {
@@ -7,6 +8,7 @@ const CreateBook = () => {
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookGenre, setBookGenre] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
+    const [isCreated, setIsCreated] = useState(false)
 
     function createBook(){
         // console.log("CreateBook method activated")
@@ -19,6 +21,7 @@ const CreateBook = () => {
                     genre: bookGenre
                 }
             })
+            .then (() => setIsCreated(true))
         } else {
             setErrorMessage("^^ All fields are mandatory ^^")
         }
@@ -26,6 +29,8 @@ const CreateBook = () => {
 
     return (
         <>
+            <Link to={`/books`}>Back to all books</Link>
+            <div></div>
             <input 
                 placeholder="Book Title"
                 value={bookTitle}
@@ -46,6 +51,7 @@ const CreateBook = () => {
             <div></div>
             <button onClick={createBook}>Create new book</button>
             <div></div>
+            {isCreated && <Redirect to="/books" />}
             <h4>{errorMessage}</h4>
         </>
     )
