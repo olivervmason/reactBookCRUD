@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-function ViewBooks() {
+const ViewBooks = () => {
 
-    // const [book, setBook] = useState([])
+    const [books, setBooks] = useState([])
 
     // This code to run upon mounting so uses useState hook
     useEffect(() => {
         axios.get(`http://localhost:3000/books/`)
-            .then(res => {
+            .then (res => {
+                setBooks(res.data)
                 console.log(res.data)
             })
     }, [])
