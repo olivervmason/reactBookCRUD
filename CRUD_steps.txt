@@ -1,0 +1,132 @@
+*1. Create Rails project - in API mode. Means we don't have view layer. Only the routes, controllers, and model. API mode also handles everything in JSON (see controller render methods; note Application controller inherits from ActionController::API).
+    rails new railssongs-backend --api --database=postgresql
+
+*2. Create database:
+    rails db:create 
+
+*3. Scaffold out song entity in Rails - to have title and artist only:
+    rails g scaffold Song title:string artist:string 
+
+*4. Migrate database:
+    rails db:migrate 
+
+*5. Add Faker gem to seed database:
+    bundle add faker 
+
+*6. Update seed file:
+
+for i in 1..10
+    Song.create(
+        title: Faker::Music::Prince.song,
+        artist: "Prince"
+    )
+    puts "Created #{i} songs"
+end 
+
+*7. run rails db:seed
+
+*8. We need to enable CORS. Need to install a GEM:
+    bundle add rack-cors 
+
+Go to confing => application.rb file and paste in following code below config.api_only = true:
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+        headers: :any,
+        expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+        methods: [:get, :post, :options, :delete, :put]
+      end
+    end
+
+------Should now be up and running as an API, fully functioning CRUD------
+
+*9. Make get request using Postman to check it is working; should return seeded songs.
+
+http://localhost:3000/songs
+
+Can also try post request. 
+    {
+    "song": {
+            "title": "New Song 1",
+            "artist": "New Artist 1"
+        }
+    }
+*Note this needs to be sent in raw JSON format under the Body tab.
+
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+
+*10. Create React app:
+    create-react-app railssongs-frontend
+
+11. Delete src folder.
+
+*12. Rebuild src folder with basic links:
+    - index.js 
+    - App.js
+
+13. Start React app:
+    npm start 
+
+*14. Add file for viewing songs and fix plumbing:
+    - ViewSongs.js
+
+15. Add in useEffect to ViewSongs to be able to create method that runs on mounting.
+
+16. Add in Axios:
+    npm i axios
+
+At top of Viewsongs:
+    import axios from 'axios'
+
+*17. Add in http request within useEffect method:
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/songs`)
+            .then(res => {
+                console.log(res.data)
+            })
+    }, [])
+
+18. Refresh page and check console - should be returning songs list.
+
+19. Now that we have the data, we want to display it to the user. Set up state to store the songs in it. Inside the ViewSongs method:
+
+const [songs, setSongs] = useState(null)
+setSongs(data)
+
+20. Add method return div to render to screen:
+
+        <div>
+            {songs.map((song, index) => (
+                <li key={song}>{index}: {song.title}, by {song.artist}</li>
+            ))}
+        </div>
+
+(NB issues axios vs fetch here)
+
+21. Added in code to show when page was loading, and refactored it to its own function.
+
+22. To handle errors, start by adding to top:
+    const [errorMessage, setErrorMessage] = useState("")
+
+23. Start work on file to view a single song... create ViewSong.js
+
+24. When that is working, set up routing...
+    npm i react-router-dom
+
+Add:
+import {BrowserRouter, Route} from 'react-router-dom'
+
+    <BrowserRouter>
+        <Route exact path="/" component="{ViewSongs}" />
+    </BrowserRouter>
+
+
+25. To add links:
+
+import {Link} from 'react-router-dom'
+
+26. Create Delete functionality - separate file.
