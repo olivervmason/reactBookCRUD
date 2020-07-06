@@ -164,7 +164,7 @@ Render error message conditionally on state of errorMessage variable:
 
 23. Start work on file to view a single song... create ViewSong.js
 
-24. When that is working, set up routing...
+24.To get the bookId from the URL we first need to set up routing...
     npm i react-router-dom
 
 Add:
