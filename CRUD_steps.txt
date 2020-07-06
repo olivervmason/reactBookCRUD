@@ -180,4 +180,26 @@ Then within render method:
 
 <Link to="/">Book list</Link>           
 
-26. Create Delete functionality - separate file.
+26. Create Delete functionality - separate file. Import axios.  
+    import axios from 'axios'
+
+const DeleteBook = (props) => {
+
+    function deleteBook(){
+        axios.delete(`http://localhost:3000/books/${props.bookId}`)
+            .then(props.onDelete)
+        // console.log(bookId.bookId)
+    }
+
+    return (
+        <button onClick={deleteBook}>Delete</button>
+    )
+}
+
+Within return on viewBooks:
+
+    bookId={book.id}
+    onDelete={() => setBooks(books.filter((b, i) => b.id !== index))}
+
+
+27. Add Method to Create a book.

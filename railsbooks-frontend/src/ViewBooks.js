@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import DeleteBook from './DeleteBook'
+import CreateBook from './CreateBook'
 
 const ViewBooks = () => {
 
@@ -26,6 +27,7 @@ const ViewBooks = () => {
     function renderBooks(){
         return (
         <>
+            <CreateBook />
             {books.map((book, index) => (
             <li key={`${book}-${index}`}>
                 {index}. {book.title} by {book.author} - {book.genre}
