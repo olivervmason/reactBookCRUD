@@ -15,7 +15,7 @@ const ViewBooks = () => {
             .then (res => {
                 setBooks(res.data)
                 setIsLoading(false)                             // No longer loading
-                console.log(res.data)                   
+                // console.log(res.data)                   
             })
             .catch(e => {
                 setErrorMessage("Error - please check URL")
@@ -31,6 +31,7 @@ const ViewBooks = () => {
             <li key={`${book}-${index}`}>
                 {index}. {book.title} by {book.author} - {book.genre}
                 <Link to={`/books/${book.id}`}>View book detail</Link>&nbsp;
+                <Link to={`/books/${book.id}/edit`}>Edit book detail</Link>&nbsp;
                 <DeleteBook 
                     bookId={book.id}
                     onDelete={() => setBooks(books.filter((b, i) => b.id !== index))}
