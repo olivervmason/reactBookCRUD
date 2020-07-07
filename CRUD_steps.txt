@@ -234,7 +234,7 @@ Prepare front end for deployment:
 
 9. Need to build app (from development version)...
 - Update package.json scripts file:
-    "build": "CI=react-scripts build"
+    "build": "CI= react-scripts build",
 - Run build:
     npm run build
 
@@ -254,3 +254,6 @@ Create Netflify account. 2 ways to upload to Netlify:
     npm run build
 
 14. Click on Deploy site.
+
+
+https://gentle-coast-98929.herokuapp.com/
