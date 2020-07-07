@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import DeleteBook from './DeleteBook'
+// import DeleteBook from './DeleteBook'
 
 const ViewBooks = () => {
 
@@ -31,11 +31,11 @@ const ViewBooks = () => {
             <li key={`${book}-${index}`}>
                 {index}. {book.title} by {book.author} - {book.genre}
                 <Link to={`/books/${book.id}`}>View book detail</Link>&nbsp;
-                <Link to={`/books/${book.id}/edit`}>Edit book detail</Link>&nbsp;
-                <DeleteBook 
+                {/* <Link to={`/books/${book.id}/edit`}>Edit book detail</Link>&nbsp; */}
+                {/* <DeleteBook 
                     bookId={book.id}
                     onDelete={() => setBooks(books.filter((b, i) => b.id !== index))}
-                />
+                /> */}
             </li>
         ))}
         </>

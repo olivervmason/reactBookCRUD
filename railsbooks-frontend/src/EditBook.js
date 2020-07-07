@@ -40,6 +40,9 @@ const EditBook = (props) => {
     return (
         <>
             <Link to={`/books`}>Back to all books</Link>
+            <div>
+                <Link to={`/books/${props.bookId}`} > Back to view book </Link>
+            </div>
             <div></div>
             <input 
                 placeholder={bookTitle}
@@ -61,7 +64,7 @@ const EditBook = (props) => {
             <div></div>
             <button onClick={editBook}>Confirm changes</button>
             <div></div>
-            {update && <Redirect to="/books" />}
+            {update && <Redirect to={`/books/${props.bookId}`} />}
             <h4>{errorMessage}</h4>
         </>
     )
