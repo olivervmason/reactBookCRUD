@@ -203,3 +203,54 @@ Within return on viewBooks:
 
 
 27. Add Method to Create a book.
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+
+Getting site on to Netifly:
+
+1. Create sepearate GitHub repos for front and back end.
+
+2. Create Heroku app from terminal:
+    heroku create
+    git push heroku master
+
+3. Add Master key from Rails backend and Check on Heroku webpage settings (can do manually if necessary):
+    heroku config:set RAILS_MASTER_KEY=<your-key>
+
+4. To migrate DB:
+    heroku run rake db:migrate
+
+5. To seed DB:
+    heroku run rake db:seed
+
+6. Get URL from Heroku; can start testing it out using Postman.
+
+Prepare front end for deployment:
+
+7. Need to change URL from localhost to Heroku URL.
+
+8. Test front end locally...
+
+9. Need to build app (from development version)...
+- Update package.json scripts file:
+    "build": "CI=react-scripts build"
+- Run build:
+    npm run build
+
+Can review instructions on bit.ly/CRA-deploy
+
+10. Commit changes to Git:
+
+Create Netflify account. 2 ways to upload to Netlify:
+    - drag and drop "build" folder; or
+    - create using git (preferred)
+
+11. Connect GitHub account on Netlify.
+
+12. Find repo on Netifly via GH...
+
+13. Set build command to:
+    npm run build
+
+14. Click on Deploy site.
