@@ -8,7 +8,7 @@ const EditBook = (props) => {
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookGenre, setBookGenre] = useState("")
     const [update, setUpdate] = useState(false)
-    // const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
         axios.get(`http://localhost:3000/books/${props.bookId}`)
@@ -33,7 +33,7 @@ const EditBook = (props) => {
             })
             .then (() => setUpdate(true))
         } else {
-            // setErrorMessage("^^ All fields are mandatory ^^")
+            setErrorMessage("^^ All fields are mandatory ^^")
         }
     }
 
@@ -62,7 +62,7 @@ const EditBook = (props) => {
             <button onClick={editBook}>Confirm changes</button>
             <div></div>
             {update && <Redirect to="/books" />}
-            {/* <h4>{errorMessage}</h4> */}
+            <h4>{errorMessage}</h4>
         </>
     )
 }
